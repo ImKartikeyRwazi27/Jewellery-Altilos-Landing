@@ -51,7 +51,7 @@ async function resendSend(body: Record<string, unknown>): Promise<ResendResponse
       "Content-Type": "application/json",
       Authorization: `Bearer ${env.RESEND_API_KEY}`,
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify({ reply_to: env.RESEND_REPLY_TO_EMAIL, ...body }),
   })
 
   if (!response.ok) {

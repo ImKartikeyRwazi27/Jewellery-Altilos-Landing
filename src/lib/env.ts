@@ -125,6 +125,11 @@ export const env = {
     get RESEND_FROM_NAME() {
         return requireEnv("RESEND_FROM_NAME")
     },
+    // Where customer replies land. Resend sends from a no-inbox address, so
+    // without this a reply to any Altilos email goes nowhere.
+    get RESEND_REPLY_TO_EMAIL() {
+        return optionalEnv("RESEND_REPLY_TO_EMAIL") ?? "kartikey.sangal@rwazi.com"
+    },
     get LEAD_MAGNET_FILE_PATH() {
         return optionalEnv("LEAD_MAGNET_FILE_PATH") ?? "public/lead-magnet.pdf"
     },
